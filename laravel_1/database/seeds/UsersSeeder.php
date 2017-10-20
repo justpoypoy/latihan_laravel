@@ -1,8 +1,8 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use App\User;
 use App\Role;
+use App\User;
 
 class UsersSeeder extends Seeder
 {
@@ -13,31 +13,30 @@ class UsersSeeder extends Seeder
      */
     public function run()
     {
-        // membuat role admin
+        // membuat admin role
         $adminRole = new Role();
         $adminRole->name = "admin";
-        $adminRole->display_name = "Admin";
+        $adminRole->display_name = "Administrator";
         $adminRole->save();
         
-        // membuat role member
+        //membuat member role
         $memberRole = new Role();
         $memberRole->name = "member";
-        $memberRole->display_name = "Member";
+        $memberRole->display_name = "Membership";
         $memberRole->save();
         
-        // mmebuat sample admin
+        // membuat admin user
         $admin = new User();
-        $admin->name = "Administrator";
-        $admin->email = "admin@gmail.com";
+        $admin->name = 'Administrator';
+        $admin->email = "admin@mail.com";
         $admin->password = bcrypt("admin");
         $admin->save();
         $admin->attachRole($adminRole);
         
-        // membuat sample member
-        
+        // membuat member user
         $member = new User();
-        $member->name = "Member";
-        $member->email = "member@gmail.com";
+        $member->name ="Membership";
+        $member->email = "member@mail.com";
         $member->password = bcrypt("member");
         $member->save();
         $member->attachRole($memberRole);
